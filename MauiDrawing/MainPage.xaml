@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiDrawing.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiDrawing"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="local:MainPage">
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="10"
+        RowDefinitions="*, Auto, 200"
+        RowSpacing="10"
+        Padding="10">
+
+        <toolkit:DrawingView
+            Grid.ColumnSpan="2"
+            IsMultiLineModeEnabled="True"
+            ShouldClearOnFinish="False"
+            LineColor="Red"
+            LineWidth="5"
+            Lines="{Binding Lines}" 
+            DrawingLineCompleted="DrawingView_DrawingLineCompleted"/>
+
+        <Button Grid.Row="1" Text="Clear"
+                Clicked="Button_Clicked_1"/>
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Clicked="Button_Clicked"
+            Text="Save" />
+
+        <Image x:Name="drawingImage"
+               HorizontalOptions="Center"
+               WidthRequest="400"
+               HeightRequest="200"
+               Grid.Row="2"
+               Grid.ColumnSpan="2"/>
+
+    </Grid>
+
+</ContentPage>
